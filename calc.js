@@ -1,11 +1,12 @@
 ;
+var calc = document.getElementById('Calc');
 var x = '', y = '', m = 0, oper, comma;
 var Screen = document.getElementById('screen');
 var OldScreen = document.getElementById('old');
 var Mem = document.getElementById('mem');
 var Operator = document.getElementById('operator');
 
-document.onclick = function (event) {
+calc.onclick = function (event) {
 
   if (event.target.className === 'num') {
     if (event.target.value === '.' && comma) {
@@ -44,20 +45,17 @@ document.onclick = function (event) {
         break;
 
       case 'MS':
-        res();
         m = +Screen.innerHTML;
         Mem.innerHTML = 'M';
         break;
 
       case 'M+':
-        res();
-        m = m + +Screen.innerHTML;
+        m = +m + Screen.innerHTML;
         Mem.innerHTML = 'M';
         break;
 
       case 'M-':
-        res();
-        m = m - Screen.innerHTML;
+        m = +m - Screen.innerHTML;
         Mem.innerHTML = 'M';
         break;
 
