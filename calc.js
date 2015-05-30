@@ -18,7 +18,7 @@ document.onclick = function (event) {
     }
   }
   if (event.target.className === 'func') {
-    switch (event.target.value) {
+    switch (event.target.name) {
       case '+':
       case '-':
       case '*':
@@ -44,21 +44,24 @@ document.onclick = function (event) {
         break;
 
       case 'MS':
+        res();
         m = +Screen.innerHTML;
         Mem.innerHTML = 'M';
         break;
 
       case 'M+':
+        res();
         m = m + +Screen.innerHTML;
         Mem.innerHTML = 'M';
         break;
 
       case 'M-':
+        res();
         m = m - Screen.innerHTML;
         Mem.innerHTML = 'M';
         break;
 
-      case '&#8592':
+      case 'BS':
         Screen.innerHTML = Screen.innerHTML.substr(0, Screen.innerHTML.length - 1);
         break;
 
@@ -76,7 +79,7 @@ document.onclick = function (event) {
         Operator.innerHTML = '';
         break;
 
-      case '&plusmn':
+      case '+-':
         if (Screen.innerHTML.substr(0, 1) == '-') {
           Screen.innerHTML = Screen.innerHTML.substr(1);
         }
@@ -85,13 +88,13 @@ document.onclick = function (event) {
         }
         break;
 
-      case '&#8730':
+      case 'SQ':
         OldScreen.innerHTML = 'sqrt (' + Screen.innerHTML + ')';
         Screen.innerHTML = Math.sqrt(+Screen.innerHTML);
         break;
 
       case '%':
-        alert('???? ?? ??????');
+        Screen.innerHTML = +OldScreen.innerHTML * +Screen.innerHTML / 100 ;
         break;
 
       case '1/x':
@@ -105,6 +108,7 @@ document.onclick = function (event) {
         }
         else {
           res();
+
           break;
         }
 
@@ -127,6 +131,6 @@ document.onclick = function (event) {
       }
     }
     x = '';
-  };
+  }
 }
 ;
