@@ -1,88 +1,83 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title></title>
-    <script src="calc.js"></script>
-    <style type="text/css">
-        input.num {
-            width: 35px;
-            padding-bottom: 3px;
-            padding-top: 3px;
-            border-width: 3px;
-            margin: 2px;
-        }
-        input.func {
-            width: 35px;
-            padding-bottom: 3px;
-            padding-top: 3px;
-            border-width: 3px;
-            margin: 2px;
-            color: green;
-        }
-        td {
-            padding: 0;
-            border: = 0;
-            cellspacing = 0;
-        }
-    </style>
+  <title>Calc</title>
+  <script src="polifills.js"></script>
+  <style type="text/css">
+    input {
+      width: 35px;
+      height: 33px;
+      padding-bottom: 3px;
+      padding-top: 3px;
+      /*border-width: 3px;*/
+      margin: 2px;
+    }
+    input.func {
+      color: green;
+    }
+    td {
+      padding: 0;
+      border: 0;
+      background-color: white;
+    }
+    tr.oldData {
+      font-size: 11px
+    }
+  </style>
 </head>
 <body>
-<div class="Calc"  style="width: 212px; border: 4px double black; background-color: lightgray;">
+<div id='Calc' class="Calc" style="width: 212px; border: 4px double black; background-color: lightgray; box-shadow: 0 0 5px 2px;">
+  <div style="height: 20px; background-color: blue">Calculator</div>
+  <table width="95%" style="margin: 5px; border: 0; background-color: white; font-family: Courier; font-weight: bold; box-shadow: inset 0 0 6px;">
+    <tr style="height: 15px;" class="oldData">
+      <td id="mem" style=" text-align: left;"></td>
+      <td id="old" style="text-align: center;"></td>
+      <td id="operator" style="width: 10%; text-align: right;"></td>
+    </tr>
 
-    <table width="95%" style="margin: 5px; border: = 0; cellspacing = 0; background-color: white;">
-        <tr style="height: 15px; ">
-            <td id="mem" style="background-color: white; text-align: left; font-size: 11px"></td>
-            <td id="old" style="background-color: white; text-align: center; font-size: 11px"></td>
-            <td id="operator" style="background-color: white; width: 10%; text-align: right; font-size: 11px"></td>
-        </tr>
-        <tr style="height: 25px;">
-            <td colspan=3 id="scrin" style="background-color: white; text-align: right"></td>
-        </tr>
-    </table>
+    <tr style="height: 25px;">
+      <td colspan=3 id="screen" style="text-align: right; font-size: 22px"></td>
+    </tr>
+  </table>
 
-        <!--<input type="text" id="scrin" formaction="calc.js" value=""  style="border-width: 5px; padding: 5px; width: 190px;">-->
+  <input name="MC" type="button" class="func" value="MC">
+  <input name="MR" type="button" class="func" value="MR">
+  <input name="MS" type="button" class="func" value="MS">
+  <input name="M+" type="button" class="func" value="M+">
+  <input name="M-" type="button" class="func" value="M-">
 
-    <div>
-        <input type=button class="func" onclick="" id="MC" value="MC">
-        <input type=button class="func" onclick="" id="MR" value="MR">
-        <input type=button class="func" onclick="" id="MS" value="MS">
-        <input type=button class="func" onclick="" id="M+" value="M+">
-        <input type=button class="func" onclick="" id="M-" value="M-">
+  <input name="BS" type="button" class="func" value="&#8592">
+  <input name="CE" type="button" class="func" value="CE">
+  <input name="C" type="button" class="func" value="C">
+  <input name="+-" type="button" class="func" value="&plusmn">
+  <input name="SQ" type="button" class="func" value="&#8730">
 
-        <input type=button class="func" onclick="" id="BS" value="&#8592">
-        <input type=button class="func" onclick="" id="CE" value="CE">
-        <input type=reset class="func" onclick="" id="C" value="C">
-        <input type=button class="func" onclick="" id="+-" value="&plusmn">
-        <input type=button class="func" onclick="" id="SQ" value="&#8730">
+  <input name="7" type="button" class="num" value="7">
+  <input name="8" type="button" class="num" value="8">
+  <input name="9" type="button" class="num" value="9">
+  <input name="/" type="button" class="func" value="/">
+  <input name="%" type="button" class="func" value="%">
 
-        <input type=button class="num" onclick="" id="7" value="7">
-        <input type=button class="num" onclick="" id="8" value="8">
-        <input type=button class="num" onclick="" id="9" value="9">
-        <input type=button class="func" onclick="" id="/" value="&#247">
-        <input type=button class="func" onclick="" id="%" value="%">
-    </div>
-    <div>
-            <input type=button class="num" onclick ="" id="4" value="4">
-            <input type=button class="num" onclick ="" id="5" value="5">
-            <input type=button class="num" onclick ="" id="6" value="6">
-            <input type=button class="func" onclick ="" id="mul" value="*">
-            <input type=button class="func" onclick ="" id="1/x" value="1/x">
-        </div>
-        <div>
-            <input type=button class="num" onclick ="" id="1" value="1">
-            <input type=button class="num" onclick ="" id="2" value="2">
-            <input type=button class="num" onclick ="" id="3" value="3">
-            <input type=button class="func" onclick ="" id="-" value="-">
-            <input type=button class="func" onclick ="" id="+" value="+">
-        </div>
-        <div>
-            <input type=button class="num" id="0" value="0">
-            <input type=button class="num" id="," value=",">
-            <input id="=" class="func" type="button" style="width: 120px;" value="=">
-        </div>
+  <input name="4" type="button" class="num" value="4">
+  <input name="5" type="button" class="num" value="5">
+  <input name="6" type="button" class="num" value="6">
+  <input name="*" type="button" class="func" value="*">
+  <input name="1/x" type="button" class="func" value="1/x">
+
+  <input name="1" type="button" class="num" value="1">
+  <input name="2" type="button" class="num" value="2">
+  <input name="3" type="button" class="num" value="3">
+  <input name="-" type="button" class="func" value="-">
+  <input name="+" type="button" class="func" value="+">
+
+  <input name="0" type="button" class="num" value="0">
+  <input name="." type="button" class="num" value=".">
+  <input name="=" type="button" class="func" style="width: 78px;" value="=">
 
 </div>
 
 <script src="calc.js"></script>
+<script src="DnD.js"></script>
+
 </body>
 </html>
