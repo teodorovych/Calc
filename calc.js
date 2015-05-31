@@ -1,24 +1,26 @@
 ;
-var calc = document.getElementById('Calc');
 var x = '', y = '', m = 0, oper, comma;
 var Screen = document.getElementById('screen');
 var OldScreen = document.getElementById('old');
 var Mem = document.getElementById('mem');
 var Operator = document.getElementById('operator');
 
-calc.onclick = function (event) {
+addEventListener("click", calcOnclick);
 
-  if (event.target.className === 'num') {
-    if (event.target.value === '.' && comma) {
+function calcOnclick (event){
+  if (!event.target.parentNode.classList.contains('Calc') || event.target.classList.contains('hide')) return null;
+
+  if (event.target.classList.contains('num')) {
+    if (event.target.value == '.' && comma) {
     }
     else {
       Screen.innerHTML += event.target.value;
-      if (event.target.value === '.') {
+      if (event.target.value == '.') {
         comma = 1;
       }
     }
   }
-  if (event.target.className === 'func') {
+  if (event.target.classList.contains('func')) {
     switch (event.target.name) {
       case '+':
       case '-':
@@ -130,5 +132,6 @@ calc.onclick = function (event) {
     }
     x = '';
   }
+  return event;
 }
 ;
