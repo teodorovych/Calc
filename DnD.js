@@ -1,8 +1,12 @@
 ;
-var drop = document.getElementById('Calc');
+addEventListener("mousedown", DnDonmousedown);
 
-drop.onmousedown = function(e) {
+ // if ( event.target.getAttribute('data-move') != 'move') return;
 
+function DnDonmousedown(e) {
+  if (e.target.className != 'move') return;
+
+  var drop = e.target.parentNode;
   var coords = getCoords(drop);
   var shiftX = e.pageX - coords.left;
   var shiftY = e.pageY - coords.top;
@@ -27,8 +31,4 @@ drop.onmousedown = function(e) {
     drop.onmouseup = null;
   };
 
-};
-
-drop.ondragstart = function() {
-  return false;
 };

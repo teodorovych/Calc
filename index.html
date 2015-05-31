@@ -23,11 +23,35 @@
     tr.oldData {
       font-size: 11px
     }
+    div {
+      position:relative;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+    }
+    div.move {
+      cursor: move;
+            background-color: blue;
+      width: 92%;
+    }
+    div.hide {
+      cursor: pointer;
+      transition: 1s;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 8%;
+      height: 16px;
+      border: 2px solid black;
+      background-color: lightgray;
+    }
   </style>
 </head>
 <body>
 <div id='Calc' class="Calc" style="width: 212px; border: 4px double black; background-color: lightgray; box-shadow: 0 0 5px 2px;">
-  <div style="height: 20px; background-color: blue">Calculator</div>
+
+  <div class="move">Calculator</div>
+  <div class="hide" title="Свернуть">-</div>
+
   <table width="95%" style="margin: 5px; border: 0; background-color: white; font-family: Courier; font-weight: bold; box-shadow: inset 0 0 6px;">
     <tr style="height: 15px;" class="oldData">
       <td id="mem" style=" text-align: left;"></td>
@@ -78,6 +102,7 @@
 
 <script src="calc.js"></script>
 <script src="DnD.js"></script>
+<script src="hide.js"></script>
 
 </body>
 </html>
