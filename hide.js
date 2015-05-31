@@ -1,13 +1,13 @@
 ;
-addEventListener("clic", programHide);
+addEventListener("click", programHide);
 
 function programHide (e){
   if (e.target.className != 'hide') return;
-  var hide = e.target.parentNode;
 
-    for (var i = 2; i < hide.childNodes.length; i++){
-        hide.childNodes[i].hidden = true;
-    }
+  var hide = e.target.parentElement;
 
-//    last.hidden = true;
+  for (var i = 2; i < hide.children.length; i++){
+    hide.children[i].hidden = !hide.children[i].hidden;
+  }
 }
+;

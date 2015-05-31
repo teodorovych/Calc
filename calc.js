@@ -1,12 +1,14 @@
 ;
-var calc = document.getElementById('Calc');
 var x = '', y = '', m = 0, oper, comma;
 var Screen = document.getElementById('screen');
 var OldScreen = document.getElementById('old');
 var Mem = document.getElementById('mem');
 var Operator = document.getElementById('operator');
 
-calc.onclick = function (event) {
+addEventListener("click", calcOnclick);
+
+function calcOnclick (event){
+  if (event.target.parentNode.className != 'Calc' || event.target.className == 'hide') return event;
 
   if (event.target.className === 'num') {
     if (event.target.value === '.' && comma) {
@@ -130,5 +132,6 @@ calc.onclick = function (event) {
     }
     x = '';
   }
+  return event;
 }
 ;
