@@ -4,7 +4,7 @@ addEventListener("mousedown", DnDonmousedown);
  // if ( event.target.getAttribute('data-move') != 'move') return;
 
 function DnDonmousedown(e) {
-  if (e.target.className != 'move') return;
+  if (!e.target.classList.contains('move')) return;
 
   var drop = e.target.parentNode;
   var coords = getCoords(drop);

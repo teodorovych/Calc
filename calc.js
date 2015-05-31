@@ -8,19 +8,19 @@ var Operator = document.getElementById('operator');
 addEventListener("click", calcOnclick);
 
 function calcOnclick (event){
-  if (event.target.parentNode.className != 'Calc' || event.target.className == 'hide') return event;
+  if (!event.target.parentNode.classList.contains('Calc') || event.target.classList.contains('hide')) return null;
 
-  if (event.target.className === 'num') {
-    if (event.target.value === '.' && comma) {
+  if (event.target.classList.contains('num')) {
+    if (event.target.value == '.' && comma) {
     }
     else {
       Screen.innerHTML += event.target.value;
-      if (event.target.value === '.') {
+      if (event.target.value == '.') {
         comma = 1;
       }
     }
   }
-  if (event.target.className === 'func') {
+  if (event.target.classList.contains('func')) {
     switch (event.target.name) {
       case '+':
       case '-':
