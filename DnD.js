@@ -1,10 +1,11 @@
 ;
-addEventListener("mousedown", DnDonmousedown);
+var elem = document.getElementsByClassName('move');
+elem.addEventListener("mousedown", dnd_onmousedown);
 
  // if ( event.target.getAttribute('data-move') != 'move') return;
 
-function DnDonmousedown(e) {
-  if (!e.target.classList.contains('move')) return;
+function dnd_onmousedown(e) {
+  //if (!e.target.classList.contains('move')) return;
 
   var drop = e.target.parentNode;
   var coords = getCoords(drop);
