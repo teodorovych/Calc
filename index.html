@@ -4,9 +4,6 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/png"/>
   <title>Calc</title>
   <script src="polyfills.js"></script>
-
-  <script src="DnD.js"></script>
-  <script src="hide.js"></script>
   <style type="text/css">
     input.calc {
       width: 35px;
@@ -56,12 +53,14 @@
 </head>
 <body>
 
-<input id="CalcIco"  type="image" src="CalcIcon.png" alt="Calculator" title="Calculator" class="Ico" onclick="RunCalc()">
+<input id="CalcIco"  type="image" src="CalcIcon.png" alt="Calculator" title="Calculator" class="Ico" onclick="runCalc()">
 
-<script>function RunCalc(){
+<script>
+function runCalc() {
   document.getElementById('CalcIco').hidden = !document.getElementById('CalcIco').hidden;
   document.getElementById('Calc').hidden = !document.getElementById('Calc').hidden;
-}</script>
+}
+</script>
 
 <div id='Calc' class="Calc Program" style="width: 212px; border: 4px double black; background-color: lightgray; box-shadow: 0 0 5px 2px;" hidden>
 
@@ -117,5 +116,7 @@
 
 </div>
 <script src="calc.js"></script>
+<script src="DnD.js"></script>
+<script src="hide.js"></script>
 </body>
 </html>

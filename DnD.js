@@ -1,11 +1,12 @@
 ;
 var elem = document.getElementsByClassName('move');
-elem.addEventListener("mousedown", dnd_onmousedown);
+for (var i = 0; i < elem.length; i++) {
+  elem[i].addEventListener("mousedown", dragNdrop);
+}
 
- // if ( event.target.getAttribute('data-move') != 'move') return;
+function dragNdrop(e) {
 
-function dnd_onmousedown(e) {
-  //if (!e.target.classList.contains('move')) return;
+  if (!e.target.classList.contains('move')) {return};
 
   var drop = e.target.parentNode;
   var coords = getCoords(drop);
@@ -19,6 +20,7 @@ function dnd_onmousedown(e) {
   drop.style.zIndex = 1000; // над другими элементами
 
   function moveAt(e) {
+
     drop.style.left = e.pageX - shiftX + 'px';
     drop.style.top = e.pageY - shiftY + 'px';
   }
@@ -28,6 +30,7 @@ function dnd_onmousedown(e) {
   };
 
   drop.onmouseup = function() {
+
     document.onmousemove = null;
     drop.onmouseup = null;
   };

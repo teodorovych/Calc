@@ -7,8 +7,8 @@ var Operator = document.getElementById('operator');
 
 addEventListener("click", calcOnclick);
 
-function calcOnclick (event){
-  if (!event.target.parentNode.classList.contains('Calc') || event.target.classList.contains('hide')) return null;
+function calcOnclick (event) {
+  if (!event.target.parentNode.classList.contains('Calc') || event.target.classList.contains('hide')) {return};
 
   if (event.target.classList.contains('num')) {
     if (event.target.value == '.' && comma) {
