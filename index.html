@@ -53,7 +53,7 @@
 </head>
 <body>
 
-<input id="CalcIco"  type="image" src="CalcIcon.png" alt="Calculator" title="Calculator" class="Ico" onclick="runCalc()">
+<input name="Calc" class="Ico" type="image" src="CalcIcon.png" alt="Calculator" title="Calculator" onclick="run()">
 
 <script>
 function runCalc() {
@@ -66,9 +66,10 @@ function runCalc() {
 
   <div class="move">_Calculator</div>
   <div class="hide" title="Hide" style="right: 21px; top: 0;"><b ver>-</b></div>
-  <div class="close" title="Close" style="right: 0; top: 0;" onclick="RunCalc()">x</div>
+  <div class="close" title="Close" style="right: 0; top: 0;" onclick="close()">x</div>
 
   <table width="95%" style="margin: 5px; border: 0; background-color: white; font-family: Courier; font-weight: bold; box-shadow: inset 0 0 6px;">
+
     <tr style="height: 15px;" class="oldData">
       <td id="mem" style=" text-align: left;"></td>
       <td id="old" style="text-align: center;"></td>
@@ -78,6 +79,7 @@ function runCalc() {
     <tr style="height: 25px;">
       <td colspan=3 id="screen" style="text-align: right; font-size: 22px"></td>
     </tr>
+
   </table>
 
   <input name="MC" type="button" class="calc func" value="MC">
@@ -115,6 +117,7 @@ function runCalc() {
   <input name="=" type="button" class="calc func" style="width: 78px;" value="=">
 
 </div>
+<script src="Run.js"></script>
 <script src="calc.js"></script>
 <script src="DnD.js"></script>
 <script src="hide.js"></script>

@@ -1,26 +1,28 @@
 ;
 var x = '', y = '', m = 0, oper, comma;
-var Screen = document.getElementById('screen');
-var OldScreen = document.getElementById('old');
-var Mem = document.getElementById('mem');
+var screenCalc = document.getElementById('screen');
+var oldscreenCalc = document.getElementById('old');
+var inRememberValue = document.getElementById('mem');
 var Operator = document.getElementById('operator');
 
-addEventListener("click", calcOnclick);
+addEventListener("click", calc);
 
-function calcOnclick (event) {
-  if (!event.target.parentNode.classList.contains('Calc') || event.target.classList.contains('hide')) {return};
+function calc(event) {
+  if (!event.target.parentNode.classList.contains('Calc')) {return};
+  if (event.target.classList.contains('hide')) {return};
 
   if (event.target.classList.contains('num')) {
-    if (event.target.value == '.' && comma) {
-    }
+    if (event.target.value == '.' && comma) {}
     else {
-      Screen.innerHTML += event.target.value;
+      screenCalc.innerHTML += event.target.value;
       if (event.target.value == '.') {
         comma = 1;
       }
     }
   }
+
   if (event.target.classList.contains('func')) {
+
     switch (event.target.name) {
       case '+':
       case '-':
@@ -29,44 +31,44 @@ function calcOnclick (event) {
         if (x) {
           res();
         }
-        x = Screen.innerHTML;
+        x = screenCalc.innerHTML;
         oper = event.target.value;
-        OldScreen.innerHTML = Screen.innerHTML;
+        oldscreenCalc.innerHTML = screenCalc.innerHTML;
         Operator.innerHTML = oper;
-        Screen.innerHTML = '';
+        screenCalc.innerHTML = '';
         comma = 0;
         break;
 
       case 'MC':
         m = 0;
-        Mem.innerHTML = '';
+        inRememberValue.innerHTML = '';
         break;
 
       case 'MR':
-        Screen.innerHTML = m;
+        screenCalc.innerHTML = m;
         break;
 
       case 'MS':
-        m = +Screen.innerHTML;
-        Mem.innerHTML = 'M';
+        m = +screenCalc.innerHTML;
+        inRememberValue.innerHTML = 'M';
         break;
 
       case 'M+':
-        m = +m + Screen.innerHTML;
-        Mem.innerHTML = 'M';
+        m = +m + screenCalc.innerHTML;
+        inRememberValue.innerHTML = 'M';
         break;
 
       case 'M-':
-        m = +m - Screen.innerHTML;
-        Mem.innerHTML = 'M';
+        m = +m - screenCalc.innerHTML;
+        inRememberValue.innerHTML = 'M';
         break;
 
       case 'BS':
-        Screen.innerHTML = Screen.innerHTML.substr(0, Screen.innerHTML.length - 1);
+        screenCalc.innerHTML = screenCalc.innerHTML.substr(0, screenCalc.innerHTML.length - 1);
         break;
 
       case 'CE':
-        Screen.innerHTML = '';
+        screenCalc.innerHTML = '';
         break;
 
       case 'C':
@@ -74,32 +76,32 @@ function calcOnclick (event) {
         y = '';
         oper = '';
         comma = 0;
-        Screen.innerHTML = '';
-        OldScreen.innerHTML = '';
+        screenCalc.innerHTML = '';
+        oldscreenCalc.innerHTML = '';
         Operator.innerHTML = '';
         break;
 
       case '+-':
-        if (Screen.innerHTML.substr(0, 1) == '-') {
-          Screen.innerHTML = Screen.innerHTML.substr(1);
+        if (screenCalc.innerHTML.substr(0, 1) == '-') {
+          screenCalc.innerHTML = screenCalc.innerHTML.substr(1);
         }
         else {
-          Screen.innerHTML = '-' + Screen.innerHTML;
+          screenCalc.innerHTML = '-' + screenCalc.innerHTML;
         }
         break;
 
       case 'SQ':
-        OldScreen.innerHTML = 'sqrt (' + Screen.innerHTML + ')';
-        Screen.innerHTML = Math.sqrt(+Screen.innerHTML);
+        oldscreenCalc.innerHTML = 'sqrt (' + screenCalc.innerHTML + ')';
+        screenCalc.innerHTML = Math.sqrt(+screenCalc.innerHTML);
         break;
 
       case '%':
-        Screen.innerHTML = +OldScreen.innerHTML * +Screen.innerHTML / 100 ;
+        screenCalc.innerHTML = +oldscreenCalc.innerHTML * +screenCalc.innerHTML / 100 ;
         break;
 
       case '1/x':
-        OldScreen.innerHTML = '1 / ' + Screen.innerHTML;
-        Screen.innerHTML = 1 / (+Screen.innerHTML);
+        oldscreenCalc.innerHTML = '1 / ' + screenCalc.innerHTML;
+        screenCalc.innerHTML = 1 / (+screenCalc.innerHTML);
         break;
 
       case '=':
@@ -114,24 +116,30 @@ function calcOnclick (event) {
 
     }
   }
+
   function res() {
-    y = Screen.innerHTML;
-    OldScreen.innerHTML = x + oper + y;
+
+    y = screenCalc.innerHTML;
+    oldscreenCalc.innerHTML = x + oper + y;
+
     if (oper === '+') {
-      Screen.innerHTML = (+x) + (+y);
-    } else {
+      screenCalc.innerHTML = (+x) + (+y);
+    }
+    else {
       if (oper === '-') {
-        Screen.innerHTML = (+x) - (+y);
-      } else {
+        screenCalc.innerHTML = (+x) - (+y);
+      }
+      else {
         if (oper === '*') {
-          Screen.innerHTML = (+x) * (+y);
-        } else {
-          Screen.innerHTML = (+x) / (+y);
+          screenCalc.innerHTML = (+x) * (+y);
+        }
+        else {
+          screenCalc.innerHTML = (+x) / (+y);
         }
       }
     }
     x = '';
   }
-  return event;
+  return;
 }
 ;
